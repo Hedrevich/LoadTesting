@@ -1,0 +1,8 @@
+GET https://sapui5.hana.ondemand.com/1.71.4/resources/sap/ushell/components/homepage/Component-preload.js HTTP/1.1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+Accept: */*
+Referer: https://procurepartestc1-sapcim-test-performance.internal.cfapps.sap.hana.ondemand.com/cp.portal/site
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Host: sapui5.hana.ondemand.com
+

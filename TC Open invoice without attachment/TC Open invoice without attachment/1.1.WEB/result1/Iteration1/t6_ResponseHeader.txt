@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+Content-Length: 115
+Content-Type: application/json
+Date: Fri, 15 Nov 2019 14:27:24 GMT
+Etag: "fbf31346bf412eaaa02c40b06cfe4a54"
+Last-Modified: Wed, 09 Oct 2019 09:25:30 GMT
+Server: openresty
+Vary: Accept-Encoding
+X-App-Host-Id: 3e9aa82e-fbbf-47a9-90c1-e81eb180e9c6
+X-Frame-Options: SAMEORIGIN
+X-Powered-By: Express
+X-Request-Id: 2c1c0412-ca50-4c47-549d-4ec821bca086
+X-Vcap-Request-Id: 4577ac91-a2a5-41a7-57b3-e13aa3de9a1d
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload;
+

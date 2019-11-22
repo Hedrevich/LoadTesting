@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Cache-Control: no-cache, no-store, must-revalidate
+Content-Encoding: gzip
+Content-Length: 959
+Content-Type: application/json; charset=utf-8
+Date: Fri, 15 Nov 2019 14:21:55 GMT
+Etag: W/"f33-A30DWlE95BIUL6DhJv+vKXDzkDY"
+Vary: Accept-Encoding
+X-Csrf-Token: 33dc9254435075c1-EKrdXdtmJ5x21GdmzXPj1839RUs
+X-Frame-Options: SAMEORIGIN
+X-Request-Id: 0ef3cbbc-e416-4d29-543a-5cd5c317558d
+X-Vcap-Request-Id: 994db6c0-96d1-4713-6dac-a50d930a59d1
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload;
+

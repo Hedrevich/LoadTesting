@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Content-Language: en-US
+Content-Security-Policy: default-src 'self';frame-ancestors ; script-src 'unsafe-inline' 'self';style-src 'self' 'unsafe-inline'
+Content-Type: text/html;charset=UTF-8
+Date: Fri, 15 Nov 2019 14:21:31 GMT
+Expires: 0
+Pragma: no-cache
+Set-Cookie: X-Uaa-Csrf=E2BhkpqCaHrq2JOVqaZEzB; Max-Age=86400; Expires=Sat, 16-Nov-2019 14:21:31 GMT; Path=/; Secure; HttpOnly
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-Vcap-Request-Id: 8c341686-55a6-4d46-753f-3bc14bb3b54a
+X-Xss-Protection: 1; mode=block
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload;
+

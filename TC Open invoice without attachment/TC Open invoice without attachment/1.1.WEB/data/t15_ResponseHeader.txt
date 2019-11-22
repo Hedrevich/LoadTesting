@@ -1,0 +1,18 @@
+HTTP/1.1 200 OK
+Content-Type: application/javascript
+Access-Control-Allow-Origin: *
+Content-Encoding: gzip
+ETag: W/"1.71.4"
+Last-Modified: Wed, 30 Oct 2019 23:08:07 GMT
+Server: Akamai Resource Optimizer
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+Vary: Accept-Encoding
+X-XSS-Protection: 0
+Content-Length: 27550
+Cache-Control: public, max-age=30212557
+Expires: Fri, 30 Oct 2020 06:44:55 GMT
+Date: Fri, 15 Nov 2019 14:22:18 GMT
+Connection: keep-alive
+timing-allow-origin: *
+X-cache-akamai: stable
+

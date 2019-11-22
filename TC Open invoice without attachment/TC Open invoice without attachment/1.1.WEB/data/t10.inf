@@ -1,0 +1,11 @@
+[t10]
+FileName1=t10_SAP-icons-TNT.json
+URL1=https://sapui5.hana.ondemand.com/1.71.4/resources/sap/tnt/themes/base/fonts/SAP-icons-TNT.json
+Total=1
+ContentType=application/json
+SnapshotXmlFile=snapshot_10.xml
+RequestHeaderFile=t10_RequestHeader.txt
+RequestBodyFile=NONE
+ResponseHeaderFile=t10_ResponseHeader.txt
+[ProtocolInfo]
+ProtocolId=QTWeb

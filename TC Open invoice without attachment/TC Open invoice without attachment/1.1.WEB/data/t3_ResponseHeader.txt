@@ -1,0 +1,12 @@
+HTTP/1.1 200 OK
+Cache-Control: no-cache, no-store, must-revalidate
+Content-Encoding: gzip
+Content-Type: text/html; charset=utf-8
+Date: Fri, 15 Nov 2019 14:21:49 GMT
+Etag: W/"17c5-ZitlVXJg+cz2ZSjw99vN7sU51d8"
+Vary: Accept-Encoding
+X-Frame-Options: SAMEORIGIN
+X-Request-Id: d422d300-f0a3-421f-4588-a7974a552a45
+X-Vcap-Request-Id: a29bee6d-9563-44b3-6168-bc5788569386
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload;
+

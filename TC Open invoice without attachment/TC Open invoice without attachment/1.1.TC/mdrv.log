@@ -1,0 +1,164 @@
+Virtual User Script started at : 2019-11-22 13:14:09
+TruClient Replay (build 1053) for LoadRunner 12.60.0, build 0971. OS: Windows 10, Browser: Chromium 63.0.3239.132, initialized on 2019/11/22 at 13:14:07 (1574417647.344s)
+
+Running Vuser...
+Starting iteration 1.
+t=00003630ms: Step 1: Navigate to "https://procurepartestc...site#Shell-home" started    [MsgId: MMSG-205180]
+t=00005333ms: Step 1: Navigate to https://procurepartestc1.../site#Shell-home successfully completed with End Event "Document Loaded"    [MsgId: MMSG-205180]
+t=00005337ms: Step 2: Log On started    [MsgId: MMSG-205180]
+t=00005841ms: Step 2.2: Type yauhen.hedrevich@sap.com in Welcome to Procurement... textbox started    [MsgId: MMSG-205180]
+t=00014010ms: Step 2.2: Type yauhen.hedrevich@sap.com in Welcome to Procurement... textbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00014513ms: Step 2.4: Type ************** in Password passwordbox started    [MsgId: MMSG-205180]
+t=00020421ms: Step 2.4: Type ************** in Password passwordbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00020924ms: Step 2.5: Click on Log On button started    [MsgId: MMSG-205180]
+t=00024334ms: Step 2.5: Click on Log On button successfully completed with End Event "Document Loaded"    [MsgId: MMSG-205180]
+t=00024338ms: Step 2: Log On successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00024840ms: Step 3: Click on link (1) link started    [MsgId: MMSG-205180]
+t=00029425ms: Step 3: Click on link (1) link successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+t=00029927ms: Step 5: Click on Search searchbox started    [MsgId: MMSG-205180]
+t=00034482ms: Step 5: Click on Search searchbox successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+t=00034938ms: Step 6: Type 0000100371 in Search searchbox started    [MsgId: MMSG-205180]
+t=00038309ms: Step 6: Type 0000100371 in Search searchbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00038811ms: Step 8: Click on Search  started    [MsgId: MMSG-205180]
+t=00039426ms: Step 8: Click on Search  successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+Notify: Transaction "Transaction 1" started.
+t=00039930ms: Step 12: Click on Invoice Number / 2019  started    [MsgId: MMSG-205180]
+t=00044377ms: Step 12: Click on Invoice Number / 2019  successfully completed with End Event "Object Exists"    [MsgId: MMSG-205180]
+Notify: Transaction "Transaction 1" ended with a "Pass" status (Duration: 4.4500 Wasted Time: 0.4040).
+Ending iteration 1.
+Starting iteration 2.
+t=00045387ms: Step 1: Navigate to "https://procurepartestc...site#Shell-home" started    [MsgId: MMSG-205180]
+t=00046507ms: Step 1: Navigate to https://procurepartestc1.../site#Shell-home successfully completed with End Event "Document Loaded"    [MsgId: MMSG-205180]
+t=00046511ms: Step 2: Log On started    [MsgId: MMSG-205180]
+t=00047014ms: Step 2.2: Type yauhen.hedrevich@sap.com in Welcome to Procurement... textbox started    [MsgId: MMSG-205180]
+t=00054840ms: Step 2.2: Type yauhen.hedrevich@sap.com in Welcome to Procurement... textbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00055342ms: Step 2.4: Type ************** in Password passwordbox started    [MsgId: MMSG-205180]
+t=00059940ms: Step 2.4: Type ************** in Password passwordbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00060443ms: Step 2.5: Click on Log On button started    [MsgId: MMSG-205180]
+t=00063934ms: Step 2.5: Click on Log On button successfully completed with End Event "Document Loaded"    [MsgId: MMSG-205180]
+t=00063938ms: Step 2: Log On successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00064440ms: Step 3: Click on link (1) link started    [MsgId: MMSG-205180]
+t=00069913ms: Step 3: Click on link (1) link successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+t=00070416ms: Step 5: Click on Search searchbox started    [MsgId: MMSG-205180]
+t=00073340ms: Step 5: Click on Search searchbox successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+t=00073846ms: Step 6: Type 0000100371 in Search searchbox started    [MsgId: MMSG-205180]
+t=00078676ms: Step 6: Type 0000100371 in Search searchbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00079178ms: Step 8: Click on Search  started    [MsgId: MMSG-205180]
+t=00079765ms: Step 8: Click on Search  successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+Notify: Transaction "Transaction 1" started.
+t=00080269ms: Step 12: Click on Invoice Number / 2019  started    [MsgId: MMSG-205180]
+t=00085633ms: Step 12: Click on Invoice Number / 2019  successfully completed with End Event "Object Exists"    [MsgId: MMSG-205180]
+Notify: Transaction "Transaction 1" ended with a "Pass" status (Duration: 5.3680 Wasted Time: 0.4030).
+Ending iteration 2.
+Starting iteration 3.
+t=00086583ms: Step 1: Navigate to "https://procurepartestc...site#Shell-home" started    [MsgId: MMSG-205180]
+t=00087776ms: Step 1: Navigate to https://procurepartestc1.../site#Shell-home successfully completed with End Event "Document Loaded"    [MsgId: MMSG-205180]
+t=00087780ms: Step 2: Log On started    [MsgId: MMSG-205180]
+t=00088284ms: Step 2.2: Type yauhen.hedrevich@sap.com in Welcome to Procurement... textbox started    [MsgId: MMSG-205180]
+t=00097303ms: Step 2.2: Type yauhen.hedrevich@sap.com in Welcome to Procurement... textbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00097807ms: Step 2.4: Type ************** in Password passwordbox started    [MsgId: MMSG-205180]
+t=00102116ms: Step 2.4: Type ************** in Password passwordbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00102618ms: Step 2.5: Click on Log On button started    [MsgId: MMSG-205180]
+t=00105715ms: Step 2.5: Click on Log On button successfully completed with End Event "Document Loaded"    [MsgId: MMSG-205180]
+t=00105719ms: Step 2: Log On successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00106222ms: Step 3: Click on link (1) link started    [MsgId: MMSG-205180]
+t=00110674ms: Step 3: Click on link (1) link successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+t=00111177ms: Step 5: Click on Search searchbox started    [MsgId: MMSG-205180]
+t=00115763ms: Step 5: Click on Search searchbox successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+t=00116265ms: Step 6: Type 0000100371 in Search searchbox started    [MsgId: MMSG-205180]
+t=00120911ms: Step 6: Type 0000100371 in Search searchbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00121414ms: Step 8: Click on Search  started    [MsgId: MMSG-205180]
+t=00122029ms: Step 8: Click on Search  successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+Notify: Transaction "Transaction 1" started.
+t=00122532ms: Step 12: Click on Invoice Number / 2019  started    [MsgId: MMSG-205180]
+t=00126858ms: Step 12: Click on Invoice Number / 2019  successfully completed with End Event "Object Exists"    [MsgId: MMSG-205180]
+Notify: Transaction "Transaction 1" ended with a "Pass" status (Duration: 4.3290 Wasted Time: 0.4010).
+Ending iteration 3.
+Starting iteration 4.
+t=00127800ms: Step 1: Navigate to "https://procurepartestc...site#Shell-home" started    [MsgId: MMSG-205180]
+t=00129053ms: Step 1: Navigate to https://procurepartestc1.../site#Shell-home successfully completed with End Event "Document Loaded"    [MsgId: MMSG-205180]
+t=00129057ms: Step 2: Log On started    [MsgId: MMSG-205180]
+t=00129560ms: Step 2.2: Type yauhen.hedrevich@sap.com in Welcome to Procurement... textbox started    [MsgId: MMSG-205180]
+t=00137875ms: Step 2.2: Type yauhen.hedrevich@sap.com in Welcome to Procurement... textbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00138378ms: Step 2.4: Type ************** in Password passwordbox started    [MsgId: MMSG-205180]
+t=00144322ms: Step 2.4: Type ************** in Password passwordbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00144824ms: Step 2.5: Click on Log On button started    [MsgId: MMSG-205180]
+t=00149713ms: Step 2.5: Click on Log On button successfully completed with End Event "Document Loaded"    [MsgId: MMSG-205180]
+t=00149717ms: Step 2: Log On successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00150221ms: Step 3: Click on link (1) link started    [MsgId: MMSG-205180]
+t=00159009ms: Step 3: Click on link (1) link successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+t=00159512ms: Step 5: Click on Search searchbox started    [MsgId: MMSG-205180]
+t=00159875ms: Step 5: Click on Search searchbox successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+t=00160378ms: Step 6: Type 0000100371 in Search searchbox started    [MsgId: MMSG-205180]
+t=00163982ms: Step 6: Type 0000100371 in Search searchbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00164485ms: Step 8: Click on Search  started    [MsgId: MMSG-205180]
+t=00165122ms: Step 8: Click on Search  successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+Notify: Transaction "Transaction 1" started.
+t=00165626ms: Step 12: Click on Invoice Number / 2019  started    [MsgId: MMSG-205180]
+t=00170087ms: Step 12: Click on Invoice Number / 2019  successfully completed with End Event "Object Exists"    [MsgId: MMSG-205180]
+Notify: Transaction "Transaction 1" ended with a "Pass" status (Duration: 4.4630 Wasted Time: 0.4030).
+Ending iteration 4.
+Starting iteration 5.
+t=00171020ms: Step 1: Navigate to "https://procurepartestc...site#Shell-home" started    [MsgId: MMSG-205180]
+t=00172128ms: Step 1: Navigate to https://procurepartestc1.../site#Shell-home successfully completed with End Event "Document Loaded"    [MsgId: MMSG-205180]
+t=00172132ms: Step 2: Log On started    [MsgId: MMSG-205180]
+t=00172634ms: Step 2.2: Type yauhen.hedrevich@sap.com in Welcome to Procurement... textbox started    [MsgId: MMSG-205180]
+t=00182448ms: Step 2.2: Type yauhen.hedrevich@sap.com in Welcome to Procurement... textbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00182951ms: Step 2.4: Type ************** in Password passwordbox started    [MsgId: MMSG-205180]
+t=00189146ms: Step 2.4: Type ************** in Password passwordbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00189648ms: Step 2.5: Click on Log On button started    [MsgId: MMSG-205180]
+t=00190873ms: Step 2.5: Click on Log On button successfully completed with End Event "Document Loaded"    [MsgId: MMSG-205180]
+t=00190877ms: Step 2: Log On successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00191381ms: Step 3: Click on link (1) link started    [MsgId: MMSG-205180]
+t=00211685ms: Error -205177: Step 3: Click on link (1) link failed - Target object was not found. Identification Method: Automatic       Snapshot Info [MSH 5 0]    [MsgId: MERR-205177]
+Ending iteration 5.
+Starting iteration 6.
+t=00212548ms: Step 1: Navigate to "https://procurepartestc...site#Shell-home" started    [MsgId: MMSG-205180]
+t=00214135ms: Step 1: Navigate to https://procurepartestc1.../site#Shell-home successfully completed with End Event "Document Loaded"    [MsgId: MMSG-205180]
+t=00214138ms: Step 2: Log On started    [MsgId: MMSG-205180]
+t=00214641ms: Step 2.2: Type yauhen.hedrevich@sap.com in Welcome to Procurement... textbox started    [MsgId: MMSG-205180]
+t=00223563ms: Step 2.2: Type yauhen.hedrevich@sap.com in Welcome to Procurement... textbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00224065ms: Step 2.4: Type ************** in Password passwordbox started    [MsgId: MMSG-205180]
+t=00229234ms: Step 2.4: Type ************** in Password passwordbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00229736ms: Step 2.5: Click on Log On button started    [MsgId: MMSG-205180]
+t=00234719ms: Step 2.5: Click on Log On button successfully completed with End Event "Document Loaded"    [MsgId: MMSG-205180]
+t=00234723ms: Step 2: Log On successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00235225ms: Step 3: Click on link (1) link started    [MsgId: MMSG-205180]
+t=00242884ms: Step 3: Click on link (1) link successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+t=00243387ms: Step 5: Click on Search searchbox started    [MsgId: MMSG-205180]
+t=00243752ms: Step 5: Click on Search searchbox successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+t=00244254ms: Step 6: Type 0000100371 in Search searchbox started    [MsgId: MMSG-205180]
+t=00248696ms: Step 6: Type 0000100371 in Search searchbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00249199ms: Step 8: Click on Search  started    [MsgId: MMSG-205180]
+t=00249800ms: Step 8: Click on Search  successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+Notify: Transaction "Transaction 1" started.
+t=00250303ms: Step 12: Click on Invoice Number / 2019  started    [MsgId: MMSG-205180]
+t=00255578ms: Step 12: Click on Invoice Number / 2019  successfully completed with End Event "Object Exists"    [MsgId: MMSG-205180]
+Notify: Transaction "Transaction 1" ended with a "Pass" status (Duration: 5.2760 Wasted Time: 0.4030).
+Ending iteration 6.
+Starting iteration 7.
+t=00256560ms: Step 1: Navigate to "https://procurepartestc...site#Shell-home" started    [MsgId: MMSG-205180]
+t=00257782ms: Step 1: Navigate to https://procurepartestc1.../site#Shell-home successfully completed with End Event "Document Loaded"    [MsgId: MMSG-205180]
+t=00257786ms: Step 2: Log On started    [MsgId: MMSG-205180]
+t=00258289ms: Step 2.2: Type yauhen.hedrevich@sap.com in Welcome to Procurement... textbox started    [MsgId: MMSG-205180]
+t=00267435ms: Step 2.2: Type yauhen.hedrevich@sap.com in Welcome to Procurement... textbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00267938ms: Step 2.4: Type ************** in Password passwordbox started    [MsgId: MMSG-205180]
+t=00272940ms: Step 2.4: Type ************** in Password passwordbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00273443ms: Step 2.5: Click on Log On button started    [MsgId: MMSG-205180]
+t=00277581ms: Step 2.5: Click on Log On button successfully completed with End Event "Document Loaded"    [MsgId: MMSG-205180]
+t=00277585ms: Step 2: Log On successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00278088ms: Step 3: Click on link (1) link started    [MsgId: MMSG-205180]
+t=00282627ms: Step 3: Click on link (1) link successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+t=00283129ms: Step 5: Click on Search searchbox started    [MsgId: MMSG-205180]
+t=00287726ms: Step 5: Click on Search searchbox successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+t=00288228ms: Step 6: Type 0000100371 in Search searchbox started    [MsgId: MMSG-205180]
+t=00291487ms: Step 6: Type 0000100371 in Search searchbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00291990ms: Step 8: Click on Search  started    [MsgId: MMSG-205180]
+t=00292608ms: Step 8: Click on Search  successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+Notify: Transaction "Transaction 1" started.
+t=00293111ms: Step 12: Click on Invoice Number / 2019  started    [MsgId: MMSG-205180]
+t=00298694ms: Step 12: Click on Invoice Number / 2019  successfully completed with End Event "Object Exists"    [MsgId: MMSG-205180]
+Notify: Transaction "Transaction 1" ended with a "Pass" status (Duration: 5.5850 Wasted Time: 0.4020).
+Ending iteration 7.
+Ending Vuser...
+Vuser Terminated.

@@ -1,0 +1,12 @@
+GET /cp.fdcCache_c1fb7092_be9b_4d33_8c8d_38be55272dc4/cachebusterTokens.json?ts=1573827715473 HTTP/1.1
+Referer: https://procurepartestc1-sapcim-test-performance.internal.cfapps.sap.hana.ondemand.com/cp.portal/site
+X-Requested-With: XMLHttpRequest
+X-XHR-Logon: accept="iframe,strict-window,window"
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Accept: */*
+Connection: Keep-Alive
+Host: procurepartestc1-sapcim-test-performance.internal.cfapps.sap.hana.ondemand.com
+Cookie: JSESSIONID=s%3AHqALjPw5wSmEU83vluJlO13XFS5h_05i.m6iFmKoR68LMvbTnDkmY9%2F2SQLuYObWtPS6miocGytg; __VCAP_ID__=66f42222-c391-4195-4209-3867
+

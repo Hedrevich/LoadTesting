@@ -1,0 +1,478 @@
+// Copyright (c) 2009-2017 SAP SE, All Rights Reserved
+/**
+ * @fileOverview Copied from UI5 and overwritten
+ *              Unified Shell's sap.cf.adapters.CommonDataModelAdapter for the 'CDM' platform.
+ *               FLP@CF --> COPIED from SAPUI5 1.54.6.
+ *               Added:
+ *               - injectTransivieClosureForPlugins
+ *               - overrideAjaxCall
+ *               - registerSessionTimeout
+ *               - xsrf token in getSite call
+ * @version 1.54.6
+ */
+(function () {
+        "use strict";
+        /* global jQuery, sap, window*/
+        jQuery.sap.declare("sap.cf.adapters.CommonDataModelAdapter");
+
+        /**
+         * This method MUST be called by the Unified Shell's container only.
+         * Constructs a new instance of the CommonDataModelAdapter for the CDM platform.
+         *
+         * @param {object} oUnused
+         * @param {string} sParameter
+         * @param {object} oAdapterConfiguration
+         *
+         * @class
+         * @constructor
+         * @see {@link sap.cf.adapters.CommonDataModelAdapter}
+         */
+        sap.cf.adapters.CommonDataModelAdapter = function (oUnused, sParameter, oAdapterConfiguration) {
+            jQuery.sap.require("sap.ushell.adapters.cdm.ClientSideTargetResolutionAdapter");
+            this.oAdapterConfiguration = oAdapterConfiguration;
+            if (oAdapterConfiguration && oAdapterConfiguration.config && oAdapterConfiguration.config.siteData) {
+                this.oCdmSiteDataRequestPromise = new jQuery.Deferred().resolve(oAdapterConfiguration.config.siteData);
+            } else if (oAdapterConfiguration && oAdapterConfiguration.config && oAdapterConfiguration.config.siteDataPromise) {
+                this.oCdmSiteDataRequestPromise = oAdapterConfiguration.config.siteDataPromise;
+            } else {
+                // if cdm site data is not directly set in configuration, a URL has to be defined
+                // for consistency, the property should be called 'siteDataUrl', but we still support
+                // 'cdmSiteUrl' for backwards compatibility
+                if (oAdapterConfiguration && oAdapterConfiguration.config) {
+                    this.sCdmSiteUrl = oAdapterConfiguration.config.siteDataUrl
+                        || oAdapterConfiguration.config.cdmSiteUrl;
+
+                }
+                //request cdm site
+                this.oCdmSiteDataRequestPromise = this._requestSiteData(this.sCdmSiteUrl);
+            }
+        };
+
+        /**
+         * Bundles the request logic for fetching the CDM site
+         *
+         * @param {string} sUrl
+         *   Url for fetching the cdm site data
+         * @returns {object} promise
+         *   The promise's done handler returns the parsed CDM site object.
+         *   In case an error occured, the promise's fail handler returns an error message.
+         * @private
+         */
+        sap.cf.adapters.CommonDataModelAdapter.prototype._requestSiteData = function (sUrl) {
+            var oSiteDataRequestDeferred = new jQuery.Deferred();
+
+            if (!sUrl) {
+                oSiteDataRequestDeferred.reject(
+                    "Cannot load site: configuration property 'siteDataUrl' is missing for CommonDataModelAdapter.");
+            } else {
+                jQuery.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: sUrl,
+                    headers: {
+                        "x-csrf-token": "Fetch"
+                    }
+                }).done(function (oResponseData, textStatus, jqXHR) {
+                    window.sap.cf.csrfToken = jqXHR.getResponseHeader('x-csrf-token');
+
+                    oSiteDataRequestDeferred.resolve(oResponseData);
+                }).fail(function (oError) {
+                    jQuery.sap.log.error(oError.responseText);
+                    window.location = 'siteNotFound/siteNotFound.html';
+                    oSiteDataRequestDeferred.reject("CDM Site was requested but could not be loaded.");
+                });
+            }
+
+            return oSiteDataRequestDeferred.promise();
+        };
+
+        /**
+         * Retrieves the CDM site
+         *
+         * @returns {object} promise
+         *   The promise's done handler returns the CDM site object.
+         *   In case an error occured, the promise's fail handler returns an error message.
+         * @public
+         */
+        sap.cf.adapters.CommonDataModelAdapter.prototype.getSite = function () {
+            var oDeferred = new jQuery.Deferred();
+
+            this.oCdmSiteDataRequestPromise.done(function (oSiteData) {
+                    var app, appKey, vizType, pageApps = {}, nonPageApps = {}, getFdcCacheTokens,
+                        oSiteWithoutPers = jQuery.extend({}, oSiteData);
+                    //get flpCfConfig meta info from HTML
+                    var flpCfConfig = JSON.parse(document.querySelector("meta[name^='sap.flp.cf']:not([name=''])").content);
+                    window.sap.cf.config = flpCfConfig;
+
+                    //TODO: remove this code when possible, set ui5VersionNumber for template processor
+                    oSiteWithoutPers.site = oSiteWithoutPers.site || {};
+                    oSiteWithoutPers.site.payload = oSiteWithoutPers.site.payload || {};
+                    oSiteWithoutPers.site.payload["sap.cloud.portal"] = oSiteWithoutPers.site.payload["sap.cloud.portal"] || {};
+                    oSiteWithoutPers.site.payload["sap.cloud.portal"].config = oSiteWithoutPers.site.payload["sap.cloud.portal"].config || {};
+                    oSiteWithoutPers.site.payload["sap.cloud.portal"].config.ui5VersionNumber = flpCfConfig.site.payload["sap.cloud.portal"].config.ui5VersionNumber;
+
+                    window.sap.cf.fesCDMSite = oSiteWithoutPers;
+                    delete oSiteWithoutPers.personalization;
+
+                    //get all apps which are not OOTB pageapps --> no transitive closure should be done to those
+                    for (appKey in oSiteWithoutPers.applications) {
+                        if (oSiteWithoutPers.applications.hasOwnProperty(appKey)) {
+                            app = oSiteWithoutPers.applications[appKey];
+                            if (app.pageConfig && app.pageConfig.type === 'fs_plain') {
+                                pageApps[appKey] = app;
+                            } else {
+                                nonPageApps[appKey] = app;
+                            }
+                        }
+                    }
+
+                    // get all viz types apps
+                    for (vizType in oSiteWithoutPers.vizTypes) {
+                        if (oSiteWithoutPers.vizTypes.hasOwnProperty(vizType)) {
+                            nonPageApps[vizType] = oSiteWithoutPers.vizTypes[vizType];
+                        }
+                    }
+
+                    //handle url templates (temporary until ui5 has implementation)
+                    //add default url templates to site
+                    sap.ui.require(['sap/cf/adapters/utils/URLTemplates'], function (URLTemplates) {
+                        oSiteWithoutPers.urlTemplates = Object.assign({}, URLTemplates.URL_TEMPLATES, oSiteWithoutPers.urltemplates, oSiteWithoutPers.urlTemplates);
+
+                        //handle url templates (TODO: temporary until ui5 has implementation)
+                        sap.cf.adapters.CommonDataModelAdapter.handleUrlTemplateApps(nonPageApps);
+
+                        sap.cf.adapters.CommonDataModelAdapter.handleSystemAliases(oSiteWithoutPers);
+
+                        //add caceh token to ootb page apps
+                        sap.cf.adapters.CommonDataModelAdapter.addCacheTokenForPageApps(pageApps);
+
+                        if (Object.keys(nonPageApps).length > 0) {
+                            getFdcCacheTokens = {
+                                url: '/cp.fdcCache_' + flpCfConfig.instanceId + '/cachebusterTokens.json?ts=' + Date.now(),
+                                context: this
+                            };
+                            jQuery.ajax(getFdcCacheTokens).done(function (fdcCacheTokens) {
+                                window.sap.cf.fdcCacheTokens = fdcCacheTokens;
+                                jQuery.sap.log.info('Got fdc cache tokens: ' + fdcCacheTokens);
+                                sap.cf.adapters.CommonDataModelAdapter.initHomepageTransitiveClosure(nonPageApps).done(function () {
+                                    sap.cf.adapters.CommonDataModelAdapter.addPlugins();
+                                    sap.ui.require(["sap/ui/thirdparty/datajs"], function () {
+                                        oDeferred.resolve(oSiteWithoutPers);
+                                    });
+                                    //oDeferred.resolve(oSiteWithoutPers);
+                                }).fail(function (sMessage) {
+                                    oDeferred.reject(sMessage);
+                                });
+                            }).fail(function (err) {
+                                jQuery.sap.log.error('Failed getting FDC cache tokens from html5-repo: ' + err.message);
+                                oDeferred.reject(err.message);
+                            });
+                        } else {
+                            sap.cf.adapters.CommonDataModelAdapter.addPlugins();
+                            sap.ui.require(["sap/ui/thirdparty/datajs"], function () {
+                                oDeferred.resolve(oSiteWithoutPers);
+                            });
+                            //oDeferred.resolve(oSiteWithoutPers);
+                        }
+                    })
+                }
+            ).fail(function (sMessage) {
+                oDeferred.reject(sMessage);
+            });
+            return oDeferred.promise();
+        };
+
+        //CLP Sceneario: in case of OnPremise system aliases replace placeholder for domain with dynamic destination domain
+        sap.cf.adapters.CommonDataModelAdapter.handleSystemAliases = function handleSystemAliases(site) {
+            var systemAlias, systemAliasObj, systemAliasKey, subDomain, subDomainMatch, port, hostSuffix;
+            var TENANT_HOST_PATTERN = new RegExp(jQuery.sap.getObject('sap.cf.config.TENANT_HOST_PATTERN'));
+            if (jQuery.sap.getObject('sap.cf.config.isCLP') && site.systemAliases) {
+                subDomainMatch = location.host.match(TENANT_HOST_PATTERN);
+                if (subDomainMatch && subDomainMatch.length >= 0) {
+                    subDomain = subDomainMatch[0];
+                    hostSuffix = location.host.substring(subDomain.length)
+                    port = location.port;
+                    for (systemAliasKey in site.systemAliases) {
+                        if (site.systemAliases.hasOwnProperty(systemAliasKey)) {
+                            systemAliasObj = site.systemAliases[systemAliasKey];
+                            systemAlias = systemAliasObj['https'] || systemAliasObj['http'];
+                            if (systemAlias && systemAlias.ProxyType === 'OnPremise') {
+
+                                //Special handling for OnPremise proxyType in which cannot write 'https'
+                                //TODO: Temporary, Destination service should fix this.
+                                if (!systemAliasObj['https']) {
+                                    systemAliasObj['https'] = systemAliasObj['http'];
+                                    delete systemAliasObj['http'];
+                                }
+                                systemAlias.host = subDomain + '-sapdelim-' + systemAliasKey + hostSuffix;
+                                systemAlias.port = port;
+                            }
+                        }
+                    }
+                } else {
+                    jQuery.sap.log.error('handleSystemAliases - could not extract subdomain. url doesnt match TENANT_HOST_PATTERN. skipping systemAliases handling');
+                    return;
+                }
+            }
+        };
+
+        /**
+         *
+         TODO: Temporary handle url template for generic url template until UI5 supports it,sample:
+         "sap.integration":
+         template = {url}{?query*}
+         "sap.integration": {
+                "urlTemplateId": "templateGenericURL",
+                "urlTemplateParams": {
+                    "url": "https://www.sap.com",
+                    "query": {
+                        "a": "AAA",
+                        "b": "BBB"
+                    }
+                },
+                "navMode": "inplace"
+            }
+         --> https://www.sap.com?a=AAA&b=BBB"
+         *
+         */
+        sap.cf.adapters.CommonDataModelAdapter.handleUrlTemplateApps = function handleUrlTemplateApps(apps) {
+            var app, appKey, inbounds, inbound, inboundKey, navMode;
+
+            //special handling for All URL templates
+            for (appKey in apps) {
+                if (apps.hasOwnProperty(appKey)) {
+                    app = apps[appKey];
+                    //if url template handle navMode property and set call resolve url
+                    if (app['sap.integration']) {
+                        navMode = app["sap.integration"].navMode || 'inplace';
+                        //set inbound in place for all inbounds (there should be one basically)
+                        inbounds = app["sap.app"]["crossNavigation"]["inbounds"];
+                        for (inboundKey in inbounds) {
+                            if (inbounds.hasOwnProperty(inboundKey)) {
+                                inbound = inbounds[inboundKey];
+                                inbound.signature = inbound.signature || {};
+                                inbound.signature.parameters = inbound.signature.parameters || {};
+
+                                //url generated by ui5 contains also this url param.  default mode in ui5 is new window if param is not set.
+                                //in new window(explace) do not add the parameter.
+                                if (navMode === "inplace") {
+                                    inbound.signature.parameters["sap-ushell-navmode"] = {
+                                        required: false,
+                                        defaultValue: {
+                                            format: "plain",
+                                            value: "inplace"
+                                        }
+                                    };
+                                }
+                            }
+                        }
+
+                        //delete from non-pageapps to skip transitive closure
+                        delete apps[appKey];
+                    }
+                }
+            }
+
+        };
+
+        sap.cf.adapters.CommonDataModelAdapter.addCacheTokenForPageApps = function addCacheTokenForPageApps(pageApps) {
+            var app, appKey;
+            if (pageApps && Object.keys(pageApps).length > 0) {
+                for (appKey in pageApps) {
+                    if (pageApps.hasOwnProperty(appKey)) {
+                        app = pageApps[appKey];
+                        //If Freestyle OOTB pageapp do not call transitive closure ,fill in the url with staticresources proxy token.//TODO: in future this should be filled from FDC
+                        app['sap.platform.runtime']['componentProperties'].url += '~' + sap.cf.config.staticResourcesCacheToken + '~/';
+                        jQuery.sap.log.info('adding token to pageapp , url = ' + app['sap.platform.runtime']['componentProperties'].url);
+                    }
+                }
+            }
+        };
+        /**
+         * Inject transitive closure to all required apps
+         * @param apps
+         * @returns {JQueryDeferred<any>}
+         */
+        sap.cf.adapters.CommonDataModelAdapter.initHomepageTransitiveClosure = function initHomepageTransitiveClosure(apps) {
+            var promise = jQuery.Deferred(), promises = [], appId, getTransitiveClosureForPlugin, appUrl, app, appKey;
+            for (appKey in apps) {
+                if (apps.hasOwnProperty(appKey)) {
+                    app = apps[appKey];
+                    appId = app['sap.app'].id;
+
+                    if (app['sap.flp'] && app['sap.flp'].type === 'plugin') {
+                        getTransitiveClosureForPlugin = {
+                            url: '/cp.fdcCache_' + window.sap.cf.config.instanceId + '/' + window.sap.cf.fdcCacheTokens[appId] + '/apps/' + appId + '/ui5AppInfo.json',
+                            context: this
+                        };
+                        promises.push(
+                            jQuery.ajax(getTransitiveClosureForPlugin).done(function (oData) {
+                                var app;
+                                var appId = oData.name;
+                                app = apps[appId];
+                                app['sap.platform.runtime'] = {
+                                    "componentProperties": oData
+                                };
+                                jQuery.sap.log.info('injecting transitive closure for plugin' + appId);
+
+                            }).fail(function (err) {
+                                jQuery.sap.log.error('Failed getting FDC cache tokens: ' + err.message);
+                                promise.reject(err);
+                            })
+                        );
+                    } else if (app['sap.platform.cf']) {
+                        //initialize url of app (for dynamic tiles indicator)                        
+                        appUrl = '/' + app['sap.platform.cf'].appName + '/' + window.sap.cf.fdcCacheTokens[appId] + app['sap.platform.cf'].uri;
+                        app['sap.platform.runtime'] = {
+                            'componentProperties': {url: appUrl}
+                        };
+                        jQuery.sap.log.info('initialized cache token for app - ' + appId + 'url:' + appUrl);
+                    }
+                }
+
+            }
+
+            jQuery.when.apply(null, promises).done(function () {
+                jQuery.sap.log.info('successfully injected transitive closure for all site plugins');
+                promise.resolve();
+            }).fail(function (err) {
+                jQuery.sap.log.error('Failed getting transitive closure for plugin,' + err.message);
+                promise.resolve();
+            });
+
+            return promise;
+        };
+
+        //add no personalization popup plugin
+        sap.cf.adapters.CommonDataModelAdapter.addPlugins = function addPlugins() {
+            if (jQuery.sap.getObject('window.sap.cf.fesCDMSite.technicalConfig.showNoPersonalizationPopup')) {
+                var noPersonalizationPopUpPlugin = {
+                    "component": "portal.cf.plugins.NoPersonalization",
+                    "url": "sap/cf/plugins/NoPersonalization"
+                };
+                var ushellConfig = window['sap-ushell-config'];
+                ushellConfig.bootstrapPlugins = ushellConfig.bootstrapPlugins || {};
+                ushellConfig.bootstrapPlugins.noPersonalization = noPersonalizationPopUpPlugin;
+                var config = ushellConfig.renderers.fiori2.componentData.config;
+                config.enablePersonalization = false;
+                config.enableSetLanguage = false;
+                config.enableSetTheme = false;
+                jQuery.sap.log.info("No personalization is available, disabling.");
+            }
+        };
+
+        /**
+         * Retrieves the personalization part of the CDM site
+         *
+         * @returns {object} promise
+         *   The promise's done handler returns the personalization object of the CDM site.
+         *   In case an error occured, the promise's fail handler returns an error message.
+         * @public
+         */
+        sap.cf.adapters.CommonDataModelAdapter.prototype.getPersonalization = function () {
+            var oDeferred = new jQuery.Deferred(),
+                that = this;
+
+            this.oCdmSiteDataRequestPromise.done(function (oSiteData) {
+                var oSiteDataCopy = jQuery.extend({}, oSiteData);
+                if (that.oAdapterConfiguration && that.oAdapterConfiguration.config && that.oAdapterConfiguration.config.ignoreSiteDataPersonalization) {
+                    delete oSiteDataCopy.personalization;
+                }
+                if (oSiteDataCopy.personalization) {
+                    oDeferred.resolve(oSiteDataCopy.personalization);
+                } else {
+                    that._readPersonalizationDataFromStorage()
+                        .done(function (oPersonalizationData) {
+                            oDeferred.resolve(oPersonalizationData);
+                        })
+                        .fail(function (sMessage) {
+                            oDeferred.reject(sMessage);
+                        });
+                }
+            }).fail(function (sMessage) {
+                oDeferred.reject(sMessage);
+            });
+
+            return oDeferred.promise();
+        };
+
+        /**
+         * Wraps the logic for storing the personalization data.
+         *
+         * @param {object} oPersonalizationData
+         *   Personalization data which should get stored
+         * @returns {object} promise
+         *   The promise's done handler indicates successful storing of personalization data.
+         *   In case an error occured, the promise's fail handler returns an error message.
+         * @private
+         */
+        sap.cf.adapters.CommonDataModelAdapter.prototype.setPersonalization = function (oPersonalizationData) {
+            var oPersonalizationDeferred = new jQuery.Deferred(),
+                oPersonalizationService = sap.ushell.Container.getService("Personalization"),
+                oComponent,
+                oScope = {
+                    keyCategory: oPersonalizationService.constants.keyCategory.FIXED_KEY,
+                    writeFrequency: oPersonalizationService.constants.writeFrequency.LOW,
+                    clientStorageAllowed: true
+                },
+                oPersId = {
+                    container: "sap.ushell.cdm.personalization",
+                    item: "data"
+                },
+                oPersonalizer = oPersonalizationService.getPersonalizer(oPersId, oScope, oComponent);
+
+            oPersonalizer.setPersData(oPersonalizationData)
+                .done(function () {
+                    jQuery.sap.log.info("Personalization data has been stored successfully.");
+                    oPersonalizationDeferred.resolve();
+                })
+                .fail(function () {
+                    oPersonalizationDeferred.reject("Writing personalization data failed.");
+                });
+
+            return oPersonalizationDeferred.promise();
+        };
+
+        sap.cf.adapters.CommonDataModelAdapter.prototype._storePersonalizationData = function (oPersonalizationData) {
+            return this.setPersonalization(oPersonalizationData);
+        };
+
+        /**
+         * Wraps the logic for fetching the personalization data.
+         *
+         * @returns {object} promise
+         *   The promise's done handler returns the parsed personalization data.
+         *   In case an error occured, the promise's fail handler returns an error message.
+         * @private
+         */
+        sap.cf.adapters.CommonDataModelAdapter.prototype._readPersonalizationDataFromStorage = function () {
+            var oPersonalizationDeferred = new jQuery.Deferred(),
+                oPersonalizationService = sap.ushell.Container.getService("Personalization"),
+                oComponent,
+                oScope = {
+                    keyCategory: oPersonalizationService.constants.keyCategory.FIXED_KEY,
+                    writeFrequency: oPersonalizationService.constants.writeFrequency.LOW,
+                    clientStorageAllowed: true
+                },
+                oPersId = {
+                    container: "sap.ushell.cdm.personalization",
+                    item: "data"
+                },
+                oPersonalizer = oPersonalizationService.getPersonalizer(oPersId, oScope, oComponent);
+
+            oPersonalizer.getPersData()
+                .done(function (oPersonalizationData) {
+                    if (!oPersonalizationData) {
+                        oPersonalizationData = {};
+                    }
+                    oPersonalizationDeferred.resolve(oPersonalizationData);
+                })
+                .fail(function () {
+                    oPersonalizationDeferred.reject("Fetching personalization data failed.");
+                });
+            return oPersonalizationDeferred.promise();
+        };
+    }
+    ()
+)
+;

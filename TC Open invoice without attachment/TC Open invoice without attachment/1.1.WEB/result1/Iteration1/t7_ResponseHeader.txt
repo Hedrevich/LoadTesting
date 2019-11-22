@@ -1,0 +1,17 @@
+HTTP/2.0 200
+Status: 200
+x-xss-protection: 0
+access-control-allow-origin: *
+etag: W/"1.71.4"
+content-type: application/json
+content-encoding: gzip
+vary: Accept-Encoding
+server: SAP
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+content-length: 464
+cache-control: public, max-age=30196392
+expires: Fri, 30 Oct 2020 02:20:36 GMT
+date: Fri, 15 Nov 2019 14:27:24 GMT
+timing-allow-origin: *
+x-cache-akamai: stable
+

@@ -1,0 +1,82 @@
+[
+    {
+        "actionName": "Action",
+        "steps": [
+            {
+                "stepId": "STEP1",
+                "stepName": "Url: site",
+                "infFile": "t1.inf",
+                "time": 1573828040565
+            },
+            {
+                "stepId": "STEP2",
+                "stepName": "Url: authorize",
+                "infFile": "t2.inf",
+                "time": 1573828041577
+            },
+            {
+                "stepId": "STEP3",
+                "stepName": "Submit Form: login.do",
+                "infFile": "t3.inf",
+                "time": 1573828044162
+            },
+            {
+                "stepId": "STEP4",
+                "stepName": "Url: sap-ui-version.json",
+                "infFile": "t4.inf",
+                "time": 1573828044246
+            },
+            {
+                "stepId": "STEP5",
+                "stepName": "Url: site_2",
+                "infFile": "t5.inf",
+                "time": 1573828044399
+            },
+            {
+                "stepId": "STEP6",
+                "stepName": "Url: cachebusterTokens.json",
+                "infFile": "t6.inf",
+                "time": 1573828044750
+            },
+            {
+                "stepId": "STEP7",
+                "stepName": "Url: manifest.json",
+                "infFile": "t7.inf",
+                "time": 1573828044816
+            },
+            {
+                "stepId": "STEP8",
+                "stepName": "Url: manifest.json_2",
+                "infFile": "t8.inf",
+                "time": 1573828044874
+            },
+            {
+                "stepId": "STEP9",
+                "stepName": "Url: cardManifest.json",
+                "infFile": "t9.inf",
+                "time": 1573828044932
+            },
+            {
+                "stepId": "STEP10",
+                "stepName": "Url: SAP-icons-TNT.json",
+                "infFile": "t10.inf",
+                "time": 1573828044993
+            },
+            {
+                "stepId": "STEP11",
+                "stepName": "Url: BusinessSuiteInAppSymbols.json",
+                "infFile": "t11.inf",
+                "time": 1573828045054
+            }
+        ],
+        "transactions": [
+            {
+                "transactionName": "invoice_open",
+                "rawStartTime": 1573828044752,
+                "rawEndTime": 1573828045055,
+                "thinkTime": 0.0,
+                "wastedTime": 0.022242307662963868
+            }
+        ]
+    }
+]

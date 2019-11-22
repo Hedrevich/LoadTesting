@@ -1,0 +1,15 @@
+[t6]
+FileName1=t6_cachebusterTokens.json
+URL1=https://procurepartestc1-sapcim-test-performance.internal.cfapps.sap.hana.ondemand.com/cp.fdcCache_c1fb7092_be9b_4d33_8c8d_38be55272dc4/cachebusterTokens.json?ts=1573827715473
+Total=3
+ContentType=application/json
+SnapshotXmlFile=snapshot_6.xml
+RequestHeaderFile=t6_RequestHeader.txt
+RequestBodyFile=NONE
+ResponseHeaderFile=t6_ResponseHeader.txt
+FileName2=t6_library-preload.html
+URL2=https://sapui5.hana.ondemand.com/1.71.4/resources/sap/ui/layout/library-preload.js
+FileName3=t6_library.css
+URL3=https://sapui5.hana.ondemand.com/1.71.4/resources/sap/ui/core/themes/sap_fiori_3/library.css?version=1.71.3&sap-ui-dist-version=1.71.4
+[ProtocolInfo]
+ProtocolId=QTWeb

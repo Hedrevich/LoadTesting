@@ -1,0 +1,17 @@
+[t2]
+FileName1=t2.html
+URL1=https://procurepartestc1.authentication.sap.hana.ondemand.com/login
+Total=4
+RequestHeaderFile=t2_RequestHeader.txt
+RequestBodyFile=NONE
+ResponseHeaderFile=t2_ResponseHeader.txt
+ContentType=text/html
+SnapshotXmlFile=snapshot_2.xml
+FileName2=t2_sap.css
+URL2=https://procurepartestc1.authentication.sap.hana.ondemand.com/resources/oss/stylesheets/sap.css
+FileName3=t2_sap.png
+URL3=https://procurepartestc1.authentication.sap.hana.ondemand.com/resources/oss/images/sap.png
+FileName4=t2_application.css
+URL4=https://procurepartestc1.authentication.sap.hana.ondemand.com/resources/oss/stylesheets/application.css
+[ProtocolInfo]
+ProtocolId=QTWeb

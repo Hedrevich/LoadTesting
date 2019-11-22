@@ -1,0 +1,20 @@
+[t2]
+FileName2=t2_2_sap.png
+RawStepEndTime=1573828041573
+FileName4=t2_0_application.css
+RequestBodyFile=t2_RequestBody.txt
+RawStepName=authorize
+ContentType=text/html
+URL1=https://procurepartestc1.authentication.sap.hana.ondemand.com/login
+URL2=https://procurepartestc1.authentication.sap.hana.ondemand.com/resources/oss/images/sap.png
+URL3=https://procurepartestc1.authentication.sap.hana.ondemand.com/resources/oss/stylesheets/sap.css
+ResponseHeaderFile=t2_ResponseHeader.txt
+URL4=https://procurepartestc1.authentication.sap.hana.ondemand.com/resources/oss/stylesheets/application.css
+SnapshotXmlFile=snapshot_2.xml
+RequestHeaderFile=t2_RequestHeader.txt
+SaveSnapshotResources=1
+RawStepStartTime=1573828040584
+Total=4
+StepName=Url: authorize
+FileName1=t2.html
+FileName3=t2_1_sap.css

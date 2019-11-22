@@ -1,0 +1,11 @@
+[t7]
+FileName1=t7_manifest.json
+URL1=https://sapui5.hana.ondemand.com/1.71.4/resources/sap/ushell/components/tiles/cdm/applauncher/manifest.json
+Total=1
+ContentType=application/json
+SnapshotXmlFile=snapshot_7.xml
+RequestHeaderFile=t7_RequestHeader.txt
+RequestBodyFile=NONE
+ResponseHeaderFile=t7_ResponseHeader.txt
+[ProtocolInfo]
+ProtocolId=QTWeb

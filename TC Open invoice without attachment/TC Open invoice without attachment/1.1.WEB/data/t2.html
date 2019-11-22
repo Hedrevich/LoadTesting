@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en" >
+<head>
+    <title>Procurement TEST Customer 1 - SAP Cloud Platform</title>
+    <meta charset='utf-8' />
+    <meta name='author' content="SAP SE" />
+    <meta name='copyright' content="Copyright © 2019 SAP SE. All rights reserved." />
+    <meta name='robots' content='all' />
+    <meta name='Description' content=""/>
+    <meta name='keywords' content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="/resources/oss/stylesheets/application.css" rel="stylesheet"/>
+<link href="/resources/oss/stylesheets/sap.css" rel="stylesheet"/>
+    <style>.header-image {null}</style>
+<script>
+    function samlRedirect() {
+        var link = null;
+        if (link != null && getQueryStringValue("origin") !== "uaa")
+            location.href = link;
+    }
+    function getQueryStringValue (key) {
+      return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+    }
+    samlRedirect();
+</script>
+</head>
+<body class="sapUiBody"   style="height: 100%; overflow: hidden;" >
+ <header class="sapUiSraBrandingBar sapThemeBrand-asBackgroundColor"></header>
+<div class="content">
+    <div class="header">
+        <div></div>
+        <div class="header-image"></div>
+    </div>
+
+    <div class="island">
+    <h2 style="color:#666666 !important;">Welcome to Procurement TEST Customer 1!</h2>
+    <div class="island-content">
+       <div>
+
+        
+
+        
+
+        
+
+        
+        <form id="PwdForm" action="/login.do" method="post" novalidate="novalidate"><input type="hidden" name="X-Uaa-Csrf" value="E2BhkpqCaHrq2JOVqaZEzB"/>
+               
+            <div >
+                <input name="username"
+                       type="text"
+                       placeholder="Email"
+                       class="form-control" autofocus="autofocus"/><input name="password"
+                       type="password"
+                       placeholder="Password"
+                       class="form-control" autocomplete="off"/>
+                
+                
+            <input type="submit" value="Log On" class="island-button"/>
+            </div>
+        </form>
+        
+       </div>
+        <div>
+          
+        </div>
+        
+    </div>
+</div>
+    <div class="footer-spacer"></div>
+</div>
+<div class="sapUiSraFooter">
+    <div class="sapUiSraLoginLogo">
+        <img width="64" src="/resources/oss/images/sap.png"/>
+    </div>
+    <div class="sapUiSraLoginCopyright"
+         title="Version: 74.1.0, Commit: d4c3fd3, Timestamp: 2019-09-05T21:25:00+0000, UAA: https://authentication.sap.hana.ondemand.com">
+         Copyright © 2019 SAP SE. All rights reserved.
+         
+    </div>
+</div>
+
+
+    
+
+</body>
+</html>

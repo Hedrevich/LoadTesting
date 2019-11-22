@@ -1,0 +1,30 @@
+Virtual User Script started at : 2019-11-18 11:54:08
+TruClient Replay (build 1053) for LoadRunner 12.60.0, build 0971. OS: Windows 10, Browser: Chromium 63.0.3239.132, initialized on 2019/11/18 at 11:54:05 (1574067245.643s)
+
+Running Vuser...
+Starting iteration 1.
+t=00004003ms: Step 1: Navigate to "https://procurepartestc...site#Shell-home" started    [MsgId: MMSG-205180]
+t=00005780ms: Step 1: Navigate to https://procurepartestc1.../site#Shell-home successfully completed with End Event "Document Loaded"    [MsgId: MMSG-205180]
+t=00005785ms: Step 2: Log On started    [MsgId: MMSG-205180]
+t=00006288ms: Step 2.2: Type yauhen.hedrevich@sap.com in Welcome to Procurement... textbox started    [MsgId: MMSG-205180]
+t=00014099ms: Step 2.2: Type yauhen.hedrevich@sap.com in Welcome to Procurement... textbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00014602ms: Step 2.4: Type ************** in Password passwordbox started    [MsgId: MMSG-205180]
+t=00021230ms: Step 2.4: Type ************** in Password passwordbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00021733ms: Step 2.6: Click on Log On button started    [MsgId: MMSG-205180]
+t=00028536ms: Step 2.6: Click on Log On button successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+t=00028543ms: Step 2: Log On successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00029046ms: Step 4: Click on Manage Supplier Invoices... link started    [MsgId: MMSG-205180]
+t=00033882ms: Step 4: Click on Manage Supplier Invoices... link successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+t=00034386ms: Step 6: Click on Search searchbox started    [MsgId: MMSG-205180]
+t=00034748ms: Step 6: Click on Search searchbox successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+t=00035252ms: Step 7: Type an_bp_0002 in Search searchbox started    [MsgId: MMSG-205180]
+t=00039425ms: Step 7: Type an_bp_0002 in Search searchbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00039928ms: Step 8: Press key Enter on Search searchbox started    [MsgId: MMSG-205180]
+t=00040568ms: Step 8: Press key Enter on Search searchbox successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+Notify: Transaction "Transaction 1" started.
+t=00041071ms: Step 10: Click on Invoicing Party / AN...  started    [MsgId: MMSG-205180]
+t=00046309ms: Step 10: Click on Invoicing Party / AN...  successfully completed with End Event "Object Exists"    [MsgId: MMSG-205180]
+Notify: Transaction "Transaction 1" ended with a "Pass" status (Duration: 5.2410 Wasted Time: 0.4020).
+Ending iteration 1.
+Ending Vuser...
+Vuser Terminated.

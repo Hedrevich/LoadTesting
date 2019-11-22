@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Cache-Control: no-cache, no-store, must-revalidate
+Content-Security-Policy: script-src 'self' 'unsafe-inline'; frame-ancestors *
+Content-Type: text/html
+Date: Fri, 15 Nov 2019 14:27:20 GMT
+X-Frame-Options: SAMEORIGIN
+X-Request-Id: 5a6e9363-634a-4eee-423c-253d54c81b6a
+X-Vcap-Request-Id: 5a6e9363-634a-4eee-423c-253d54c81b6a
+Content-Length: 696
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload;
+

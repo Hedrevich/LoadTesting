@@ -1,0 +1,17 @@
+HTTP/1.1 200 OK
+X-XSS-Protection: 0
+Access-Control-Allow-Origin: *
+ETag: W/"1.71.4"
+Content-Type: application/json
+Content-Encoding: gzip
+Vary: Accept-Encoding
+Server: SAP
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+Content-Length: 3154
+Cache-Control: public, max-age=30190698
+Expires: Fri, 30 Oct 2020 00:40:13 GMT
+Date: Fri, 15 Nov 2019 14:21:55 GMT
+Connection: keep-alive
+timing-allow-origin: *
+X-cache-akamai: stable
+

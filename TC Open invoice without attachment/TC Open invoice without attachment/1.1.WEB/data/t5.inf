@@ -1,0 +1,13 @@
+[t5]
+FileName1=t5_site.json
+URL1=https://procurepartestc1-sapcim-test-performance.internal.cfapps.sap.hana.ondemand.com/cp.portal/portal/rest/v1/site?siteId=default&sap-language=en&enablePersonalization=true
+Total=2
+ContentType=application/json
+SnapshotXmlFile=snapshot_5.xml
+RequestHeaderFile=t5_RequestHeader.txt
+RequestBodyFile=NONE
+ResponseHeaderFile=t5_ResponseHeader.txt
+FileName2=t5_messagebundle_en.txt
+URL2=https://sapui5.hana.ondemand.com/1.71.4/resources/sap/ui/fl/messagebundle_en.properties
+[ProtocolInfo]
+ProtocolId=QTWeb

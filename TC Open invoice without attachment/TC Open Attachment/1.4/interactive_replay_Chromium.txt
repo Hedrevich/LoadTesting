@@ -1,0 +1,37 @@
+Virtual User Script started at : 2019-11-20 18:04:21
+TruClient Replay (build 1053) for LoadRunner 12.60.0, build 0971. OS: Windows 10, Browser: Chromium 63.0.3239.132, initialized on 2019/11/20 at 18:04:21 (1574262261.183s)
+Running Vuser...
+Starting iteration 1.
+t=00001484ms: Step 1: Navigate to "https://procurepartestc...site#Shell-home" started    [MsgId: MMSG-205180]
+t=00002767ms: Step 1: Navigate to https://procurepartestc1.../site#Shell-home successfully completed with End Event "Document Loaded"    [MsgId: MMSG-205180]
+t=00002793ms: Step 2: Log On started    [MsgId: MMSG-205180]
+t=00003307ms: Step 2.1: Type yauhen.hedrevich@sap.com in Welcome to Procurement... textbox started    [MsgId: MMSG-205180]
+t=00012719ms: Step 2.1: Type yauhen.hedrevich@sap.com in Welcome to Procurement... textbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00013224ms: Step 2.3: Type ************** in Password passwordbox started    [MsgId: MMSG-205180]
+t=00019008ms: Step 2.3: Type ************** in Password passwordbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00019515ms: Step 2.4: Press key Enter on Password passwordbox started    [MsgId: MMSG-205180]
+t=00027228ms: Step 2.4: Press key Enter on Password passwordbox successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+t=00027237ms: Step 2: Log On successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00027743ms: Step 3: Click on link (1) link started    [MsgId: MMSG-205180]
+t=00028737ms: Step 3: Click on link (1) link successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+t=00029242ms: Step 5: Click on Invoice Document No. textbox started    [MsgId: MMSG-205180]
+t=00032836ms: Step 5: Click on Invoice Document No. textbox successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+t=00033342ms: Step 6: Type 5105600147 in Invoice Document No. textbox started    [MsgId: MMSG-205180]
+t=00037188ms: Step 6: Type 5105600147 in Invoice Document No. textbox successfully completed with End Event "Action completed"    [MsgId: MMSG-205180]
+t=00037693ms: Step 8: Click on Company Code in Connected... gridcell started    [MsgId: MMSG-205180]
+t=00038203ms: Step 8: Click on Company Code in Connected... gridcell successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+t=00038707ms: Step 9: Click on Go  started    [MsgId: MMSG-205180]
+t=00039417ms: Step 9: Click on Go  successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+t=00039935ms: Step 11: Click on Invoicing Party / AN... gridcell started    [MsgId: MMSG-205180]
+t=00040536ms: Step 11: Click on Invoicing Party / AN... gridcell successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+t=00041042ms: Step 13: Click on More button started    [MsgId: MMSG-205180]
+t=00044946ms: Step 13: Click on More button successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+t=00045451ms: Step 15: Click on Attachments option started    [MsgId: MMSG-205180]
+t=00045769ms: Step 15: Click on Attachments option successfully completed with End Event "Step network completed"    [MsgId: MMSG-205180]
+Notify: Transaction "Transaction 1" started.
+t=00046278ms: Step 17: Click on Last Updated on Apr 11,...  started    [MsgId: MMSG-205180]
+t=00048851ms: Step 17: Click on Last Updated on Apr 11,...  successfully completed with End Event "Object Exists"    [MsgId: MMSG-205180]
+Notify: Transaction "Transaction 1" ended with a "Pass" status (Duration: 2.5810 Wasted Time: 0.3410).
+Ending iteration 1.
+Ending Vuser...
+Vuser Terminated.
